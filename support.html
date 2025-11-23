@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxScript Support</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        .faq-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .contact-box {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border: 1px solid #90caf9;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>VoxScript Support</h1>
+    <p>Welcome to VoxScript support. Find answers to common questions or contact us for help.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <div class="faq-question">How do I transcribe an audio or video file?</div>
+        <div class="faq-answer">
+            <ol>
+                <li>Tap "Choose Source" on the main screen</li>
+                <li>Select "Browse Files" to pick from Files app, or "Photo Library" for videos</li>
+                <li>Choose your audio/video file</li>
+                <li>VoxScript will automatically transcribe it (takes 1-2 minutes per minute of audio)</li>
+                <li>View the transcription with timestamps and audio playback</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">What file formats are supported?</div>
+        <div class="faq-answer">
+            VoxScript supports most common audio and video formats:
+            <ul>
+                <li><strong>Audio:</strong> MP3, WAV, M4A, AAC, FLAC, OGG</li>
+                <li><strong>Video:</strong> MP4, MOV, AVI, MKV (audio is extracted automatically)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Why is transcription taking so long?</div>
+        <div class="faq-answer">
+            Transcription speed depends on:
+            <ul>
+                <li><strong>File length:</strong> Generally 1-2 minutes of processing per minute of audio</li>
+                <li><strong>Device model:</strong> Newer iPhones (iPhone 13+) are faster</li>
+                <li><strong>Model selection:</strong> Tiny model is faster, Base model is more accurate but slower</li>
+                <li><strong>First use:</strong> The AI model downloads on first transcription (40-140 MB)</li>
+            </ul>
+            Processing happens entirely on your device for privacy, which takes longer than cloud services but keeps your data secure.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">How do I change the transcription model?</div>
+        <div class="faq-answer">
+            <ol>
+                <li>Tap the gear icon (⚙️) in the top-right corner</li>
+                <li>Select your preferred model:
+                    <ul>
+                        <li><strong>Tiny:</strong> Fast, smaller download (~40MB), good accuracy</li>
+                        <li><strong>Base:</strong> Slower, larger download (~140MB), better accuracy</li>
+                    </ul>
+                </li>
+                <li>The model will download on your next transcription if not already installed</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">How do I export my transcription?</div>
+        <div class="faq-answer">
+            After transcription completes:
+            <ul>
+                <li><strong>Export as Text:</strong> Creates a .txt file with the transcription and timestamps</li>
+                <li><strong>Export as SRT:</strong> Creates a subtitle file (.srt) for video editing software</li>
+            </ul>
+            Both options use the iOS share sheet - you can save to Files, send via email, or share to other apps.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Does VoxScript need internet access?</div>
+        <div class="faq-answer">
+            <strong>No internet required after setup.</strong> On your first transcription, VoxScript downloads the selected AI model (one-time download). After that, everything works completely offline. Your audio files never leave your device.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Is my data private?</div>
+        <div class="faq-answer">
+            <strong>Yes, completely.</strong> VoxScript:
+            <ul>
+                <li>Processes everything on your device</li>
+                <li>Never uploads audio files to any server</li>
+                <li>Doesn't collect any user data</li>
+                <li>Doesn't require an account or login</li>
+                <li>Has no analytics or tracking</li>
+            </ul>
+            See our <a href="privacy-policy.html">Privacy Policy</a> for full details.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">What languages are supported?</div>
+        <div class="faq-answer">
+            VoxScript supports 80+ languages through the Whisper AI model, including:
+            <ul>
+                <li>English, Spanish, French, German, Italian, Portuguese</li>
+                <li>Chinese (Mandarin), Japanese, Korean</li>
+                <li>Arabic, Hindi, Russian</li>
+                <li>And many more...</li>
+            </ul>
+            Language is detected automatically from the audio.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Why is the transcription not accurate?</div>
+        <div class="faq-answer">
+            Transcription accuracy depends on:
+            <ul>
+                <li><strong>Audio quality:</strong> Clear audio with minimal background noise works best</li>
+                <li><strong>Speaker clarity:</strong> Distinct speech is easier to transcribe</li>
+                <li><strong>Accents:</strong> Strong accents may reduce accuracy</li>
+                <li><strong>Technical terms:</strong> Specialized vocabulary may be misinterpreted</li>
+                <li><strong>Model choice:</strong> Try the Base model for better accuracy</li>
+            </ul>
+            For best results, use clear recordings in quiet environments.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Can I transcribe phone calls or live audio?</div>
+        <div class="faq-answer">
+            <strong>No.</strong> VoxScript only transcribes pre-recorded audio and video files. It does not support:
+            <ul>
+                <li>Live recording and transcription</li>
+                <li>Real-time speech-to-text</li>
+                <li>Phone call recording</li>
+            </ul>
+            You must first create an audio recording using another app (like Voice Memos), then import it into VoxScript.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">How do I use SRT files for video captions?</div>
+        <div class="faq-answer">
+            <ol>
+                <li>Export your transcription as SRT format</li>
+                <li>Import the SRT file into your video editing software:
+                    <ul>
+                        <li><strong>Final Cut Pro:</strong> File → Import → Captions</li>
+                        <li><strong>Premiere Pro:</strong> Import SRT as a caption track</li>
+                        <li><strong>DaVinci Resolve:</strong> Import SRT in the subtitle panel</li>
+                        <li><strong>YouTube:</strong> Upload SRT when adding subtitles</li>
+                    </ul>
+                </li>
+                <li>Adjust timing if needed in your editor</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2>Troubleshooting</h2>
+
+    <div class="faq-item">
+        <div class="faq-question">App crashes or freezes during transcription</div>
+        <div class="faq-answer">
+            Try these solutions:
+            <ul>
+                <li>Restart the app</li>
+                <li>Free up storage space (transcription models need 40-140MB)</li>
+                <li>Try a shorter audio file first to test</li>
+                <li>Switch to the Tiny model if using Base</li>
+                <li>Restart your iPhone</li>
+                <li>Ensure iOS is up to date (iOS 17.0 or later required)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Model download failed or stuck</div>
+        <div class="faq-answer">
+            <ul>
+                <li>Check your internet connection</li>
+                <li>Ensure you have enough free storage (40MB for Tiny, 140MB for Base)</li>
+                <li>Try restarting the app and attempting transcription again</li>
+                <li>If problem persists, delete and reinstall the app</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Export/Share not working</div>
+        <div class="faq-answer">
+            <ul>
+                <li>Make sure Files app has permission to save files</li>
+                <li>Check that the receiving app (email, etc.) is properly installed</li>
+                <li>Try exporting again after restarting VoxScript</li>
+                <li>Free up storage space on your device</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Feature Requests & Bug Reports</h2>
+    <p>We're constantly improving VoxScript. If you have ideas for new features or found a bug:</p>
+    <ul>
+        <li><strong>Submit an issue:</strong> <a href="https://github.com/JamesAnthonyDellaMorte/voxscript-privacy/issues" class="button">Report on GitHub</a></li>
+        <li><strong>Email us:</strong> Include details about your device model, iOS version, and what happened</li>
+    </ul>
+
+    <div class="contact-box">
+        <h2>Still Need Help?</h2>
+        <p>If you couldn't find an answer above, contact us:</p>
+        <p><strong>📧 Email:</strong> <a href="mailto:contact@voxscript.app">contact@voxscript.app</a></p>
+        <p><strong>🐙 GitHub:</strong> <a href="https://github.com/JamesAnthonyDellaMorte/voxscript-privacy">JamesAnthonyDellaMorte/voxscript-privacy</a></p>
+        <p style="margin-top: 15px; font-size: 14px; color: #666;">
+            When contacting support, please include:
+            <ul style="font-size: 14px; color: #666;">
+                <li>Your iPhone model</li>
+                <li>iOS version</li>
+                <li>VoxScript version</li>
+                <li>Description of the issue</li>
+            </ul>
+        </p>
+    </div>
+
+    <hr style="margin-top: 40px; border: none; border-top: 1px solid #e0e0e0;">
+    <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
+        VoxScript &copy; 2025. All rights reserved.<br>
+        <a href="privacy-policy.html" style="color: #3498db;">Privacy Policy</a> |
+        <a href="support.html" style="color: #3498db;">Support</a>
+    </p>
+</body>
+</html>
