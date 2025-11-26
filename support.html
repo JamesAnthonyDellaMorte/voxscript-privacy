@@ -3,290 +3,746 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoxScript Support</title>
+    <title>Support - VoxScript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple-primary: #9333ea;
+            --purple-light: #a855f7;
+            --purple-dark: #7c3aed;
+            --purple-glow: rgba(147, 51, 234, 0.3);
+            --black-primary: #0a0a0a;
+            --black-secondary: #141414;
+            --black-card: #1a1a1a;
+            --black-border: #2a2a2a;
+            --white: #ffffff;
+            --gray-light: #e5e5e5;
+            --gray-mid: #a3a3a3;
+            --gray-dark: #737373;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--black-primary);
+            color: var(--gray-light);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--black-border);
+            z-index: 1000;
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-mid);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--purple-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 24px 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at top, rgba(147, 51, 234, 0.15) 0%, transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-mid);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            padding: 0 24px 100px;
         }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 60px 0 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
+
+        .section-title:first-of-type {
+            margin-top: 0;
         }
+
+        .section-title-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        /* FAQ Items */
         .faq-item {
-            background-color: #f8f9fa;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border-left: 4px solid #3498db;
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
         }
+
+        .faq-item:hover {
+            border-color: var(--purple-primary);
+        }
+
         .faq-question {
-            font-weight: bold;
-            color: #2c3e50;
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1.05rem;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--purple-light);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 1000px;
+        }
+
+        .faq-answer-content {
+            padding: 0 24px 24px;
+            color: var(--gray-mid);
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer-content ol,
+        .faq-answer-content ul {
+            margin: 12px 0 12px 24px;
+        }
+
+        .faq-answer-content li {
             margin-bottom: 8px;
         }
-        .contact-box {
-            background-color: #e3f2fd;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 30px;
-            border: 1px solid #90caf9;
+
+        .faq-answer-content strong {
+            color: var(--gray-light);
         }
-        .button {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
+
+        .faq-answer-content a {
+            color: var(--purple-light);
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
         }
-        .button:hover {
-            background-color: #2980b9;
+
+        .faq-answer-content a:hover {
+            text-decoration: underline;
         }
-        ul {
-            margin-left: 20px;
+
+        /* Formats Grid */
+        .formats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
         }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
+
+        .format-card {
+            background: var(--black-secondary);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .format-card h4 {
+            color: var(--purple-light);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .format-card p {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Contact Box */
+        .contact-box {
+            background: linear-gradient(135deg, var(--purple-dark), var(--purple-primary));
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-box h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-box p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 24px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .contact-tips {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-tips h4 {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .contact-tips ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .contact-tips li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Report Button */
+        .report-section {
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .report-section p {
+            color: var(--gray-mid);
+            margin-bottom: 20px;
+        }
+
+        .report-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--purple-light);
+            padding: 12px 24px;
+            border: 2px solid var(--purple-primary);
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .report-btn:hover {
+            background: var(--purple-primary);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--black-border);
+            color: var(--gray-dark);
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--purple-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 20px;
+            }
+
+            .faq-answer-content {
+                padding: 0 20px 20px;
+            }
+
+            .formats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 32px 24px;
+            }
+
+            .contact-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .contact-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>VoxScript Support</h1>
-    <p>Welcome to VoxScript support. Find answers to common questions or contact us for help.</p>
-
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-item">
-        <div class="faq-question">How do I transcribe an audio or video file?</div>
-        <div class="faq-answer">
-            <ol>
-                <li>Tap "Choose Source" on the main screen</li>
-                <li>Select "Browse Files" to pick from Files app, or "Photo Library" for videos</li>
-                <li>Choose your audio/video file</li>
-                <li>VoxScript will automatically transcribe it (takes 1-2 minutes per minute of audio)</li>
-                <li>View the transcription with timestamps and audio playback</li>
-            </ol>
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">What file formats are supported?</div>
-        <div class="faq-answer">
-            VoxScript supports most common audio and video formats:
-            <ul>
-                <li><strong>Audio:</strong> MP3, WAV, M4A, AAC, FLAC, OGG</li>
-                <li><strong>Video:</strong> MP4, MOV, AVI, MKV (audio is extracted automatically)</li>
+    <nav>
+        <div class="nav-container">
+            <a href="privacy-policy.html" class="logo">
+                <div class="logo-icon">V</div>
+                VoxScript
+            </a>
+            <ul class="nav-links">
+                <li><a href="privacy-policy.html">Privacy</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
             </ul>
         </div>
-    </div>
+    </nav>
 
-    <div class="faq-item">
-        <div class="faq-question">Why is transcription taking so long?</div>
-        <div class="faq-answer">
-            Transcription speed depends on:
-            <ul>
-                <li><strong>File length:</strong> Generally 1-2 minutes of processing per minute of audio</li>
-                <li><strong>Device model:</strong> Newer iPhones (iPhone 13+) are faster</li>
-                <li><strong>Model selection:</strong> Tiny model is faster, Base model is more accurate but slower</li>
-                <li><strong>First use:</strong> The AI model downloads on first transcription (40-140 MB)</li>
-            </ul>
-            Processing happens entirely on your device for privacy, which takes longer than cloud services but keeps your data secure.
+    <section class="hero">
+        <h1>Support</h1>
+        <p class="subtitle">Find answers to common questions or get in touch with our team for help.</p>
+    </section>
+
+    <main>
+        <h2 class="section-title">
+            <span class="section-title-icon">?</span>
+            Frequently Asked Questions
+        </h2>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I transcribe an audio or video file?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <ol>
+                        <li>Tap <strong>"Choose Source"</strong> on the main screen</li>
+                        <li>Select <strong>"Browse Files"</strong> to pick from Files app, or <strong>"Photo Library"</strong> for videos</li>
+                        <li>Choose your audio/video file</li>
+                        <li>VoxScript will automatically transcribe it (takes 1-2 minutes per minute of audio)</li>
+                        <li>View the transcription with timestamps and audio playback</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="faq-item">
-        <div class="faq-question">How do I change the transcription model?</div>
-        <div class="faq-answer">
-            <ol>
-                <li>Tap the gear icon (⚙️) in the top-right corner</li>
-                <li>Select your preferred model:
+        <div class="faq-item">
+            <div class="faq-question">What file formats are supported?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>VoxScript supports most common audio and video formats:</p>
+                    <div class="formats-grid">
+                        <div class="format-card">
+                            <h4>Audio</h4>
+                            <p>MP3, WAV, M4A, AAC, FLAC, OGG</p>
+                        </div>
+                        <div class="format-card">
+                            <h4>Video</h4>
+                            <p>MP4, MOV, AVI, MKV (audio extracted automatically)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Why is transcription taking so long?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Transcription speed depends on:</p>
                     <ul>
-                        <li><strong>Tiny:</strong> Fast, smaller download (~40MB), good accuracy</li>
-                        <li><strong>Base:</strong> Slower, larger download (~140MB), better accuracy</li>
+                        <li><strong>File length</strong> — Generally 1-2 minutes of processing per minute of audio</li>
+                        <li><strong>Device model</strong> — Newer iPhones (iPhone 13+) are faster</li>
+                        <li><strong>Model selection</strong> — Tiny model is faster, Base model is more accurate but slower</li>
+                        <li><strong>First use</strong> — The AI model downloads on first transcription (40-140 MB)</li>
                     </ul>
-                </li>
-                <li>The model will download on your next transcription if not already installed</li>
-            </ol>
+                    <p>Processing happens entirely on your device for privacy, which takes longer than cloud services but keeps your data secure.</p>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="faq-item">
-        <div class="faq-question">How do I export my transcription?</div>
-        <div class="faq-answer">
-            After transcription completes:
-            <ul>
-                <li><strong>Export as Text:</strong> Creates a .txt file with the transcription and timestamps</li>
-                <li><strong>Export as SRT:</strong> Creates a subtitle file (.srt) for video editing software</li>
-            </ul>
-            Both options use the iOS share sheet - you can save to Files, send via email, or share to other apps.
+        <div class="faq-item">
+            <div class="faq-question">How do I change the transcription model?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <ol>
+                        <li>Tap the gear icon in the top-right corner</li>
+                        <li>Select your preferred model:
+                            <ul>
+                                <li><strong>Tiny</strong> — Fast, smaller download (~40MB), good accuracy</li>
+                                <li><strong>Base</strong> — Slower, larger download (~140MB), better accuracy</li>
+                            </ul>
+                        </li>
+                        <li>The model will download on your next transcription if not already installed</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="faq-item">
-        <div class="faq-question">Does VoxScript need internet access?</div>
-        <div class="faq-answer">
-            <strong>No internet required after setup.</strong> On your first transcription, VoxScript downloads the selected AI model (one-time download). After that, everything works completely offline. Your audio files never leave your device.
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Is my data private?</div>
-        <div class="faq-answer">
-            <strong>Yes, completely.</strong> VoxScript:
-            <ul>
-                <li>Processes everything on your device</li>
-                <li>Never uploads audio files to any server</li>
-                <li>Doesn't collect any user data</li>
-                <li>Doesn't require an account or login</li>
-                <li>Has no analytics or tracking</li>
-            </ul>
-            See our <a href="privacy-policy.html">Privacy Policy</a> for full details.
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">What languages are supported?</div>
-        <div class="faq-answer">
-            VoxScript supports 80+ languages through the Whisper AI model, including:
-            <ul>
-                <li>English, Spanish, French, German, Italian, Portuguese</li>
-                <li>Chinese (Mandarin), Japanese, Korean</li>
-                <li>Arabic, Hindi, Russian</li>
-                <li>And many more...</li>
-            </ul>
-            Language is detected automatically from the audio.
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Why is the transcription not accurate?</div>
-        <div class="faq-answer">
-            Transcription accuracy depends on:
-            <ul>
-                <li><strong>Audio quality:</strong> Clear audio with minimal background noise works best</li>
-                <li><strong>Speaker clarity:</strong> Distinct speech is easier to transcribe</li>
-                <li><strong>Accents:</strong> Strong accents may reduce accuracy</li>
-                <li><strong>Technical terms:</strong> Specialized vocabulary may be misinterpreted</li>
-                <li><strong>Model choice:</strong> Try the Base model for better accuracy</li>
-            </ul>
-            For best results, use clear recordings in quiet environments.
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Can I transcribe phone calls or live audio?</div>
-        <div class="faq-answer">
-            <strong>No.</strong> VoxScript only transcribes pre-recorded audio and video files. It does not support:
-            <ul>
-                <li>Live recording and transcription</li>
-                <li>Real-time speech-to-text</li>
-                <li>Phone call recording</li>
-            </ul>
-            You must first create an audio recording using another app (like Voice Memos), then import it into VoxScript.
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">How do I use SRT files for video captions?</div>
-        <div class="faq-answer">
-            <ol>
-                <li>Export your transcription as SRT format</li>
-                <li>Import the SRT file into your video editing software:
+        <div class="faq-item">
+            <div class="faq-question">How do I export my transcription?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>After transcription completes:</p>
                     <ul>
-                        <li><strong>Final Cut Pro:</strong> File → Import → Captions</li>
-                        <li><strong>Premiere Pro:</strong> Import SRT as a caption track</li>
-                        <li><strong>DaVinci Resolve:</strong> Import SRT in the subtitle panel</li>
-                        <li><strong>YouTube:</strong> Upload SRT when adding subtitles</li>
+                        <li><strong>Export as Text</strong> — Creates a .txt file with the transcription and timestamps</li>
+                        <li><strong>Export as SRT</strong> — Creates a subtitle file (.srt) for video editing software</li>
                     </ul>
-                </li>
-                <li>Adjust timing if needed in your editor</li>
-            </ol>
+                    <p>Both options use the iOS share sheet — you can save to Files, send via email, or share to other apps.</p>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <h2>Troubleshooting</h2>
-
-    <div class="faq-item">
-        <div class="faq-question">App crashes or freezes during transcription</div>
-        <div class="faq-answer">
-            Try these solutions:
-            <ul>
-                <li>Restart the app</li>
-                <li>Free up storage space (transcription models need 40-140MB)</li>
-                <li>Try a shorter audio file first to test</li>
-                <li>Switch to the Tiny model if using Base</li>
-                <li>Restart your iPhone</li>
-                <li>Ensure iOS is up to date (iOS 17.0 or later required)</li>
-            </ul>
+        <div class="faq-item">
+            <div class="faq-question">Does VoxScript need internet access?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p><strong>No internet required after setup.</strong> On your first transcription, VoxScript downloads the selected AI model (one-time download). After that, everything works completely offline. Your audio files never leave your device.</p>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="faq-item">
-        <div class="faq-question">Model download failed or stuck</div>
-        <div class="faq-answer">
-            <ul>
-                <li>Check your internet connection</li>
-                <li>Ensure you have enough free storage (40MB for Tiny, 140MB for Base)</li>
-                <li>Try restarting the app and attempting transcription again</li>
-                <li>If problem persists, delete and reinstall the app</li>
-            </ul>
+        <div class="faq-item">
+            <div class="faq-question">Is my data private?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p><strong>Yes, completely.</strong> VoxScript:</p>
+                    <ul>
+                        <li>Processes everything on your device</li>
+                        <li>Never uploads audio files to any server</li>
+                        <li>Doesn't collect any user data</li>
+                        <li>Doesn't require an account or login</li>
+                        <li>Has no analytics or tracking</li>
+                    </ul>
+                    <p>See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</p>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="faq-item">
-        <div class="faq-question">Export/Share not working</div>
-        <div class="faq-answer">
-            <ul>
-                <li>Make sure Files app has permission to save files</li>
-                <li>Check that the receiving app (email, etc.) is properly installed</li>
-                <li>Try exporting again after restarting VoxScript</li>
-                <li>Free up storage space on your device</li>
-            </ul>
+        <div class="faq-item">
+            <div class="faq-question">What languages are supported?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>VoxScript supports <strong>80+ languages</strong> through the Whisper AI model, including:</p>
+                    <ul>
+                        <li>English, Spanish, French, German, Italian, Portuguese</li>
+                        <li>Chinese (Mandarin), Japanese, Korean</li>
+                        <li>Arabic, Hindi, Russian</li>
+                        <li>And many more...</li>
+                    </ul>
+                    <p>Language is detected automatically from the audio.</p>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <h2>Feature Requests & Bug Reports</h2>
-    <p>We're constantly improving VoxScript. If you have ideas for new features or found a bug:</p>
-    <ul>
-        <li><strong>Submit an issue:</strong> <a href="https://github.com/JamesAnthonyDellaMorte/voxscript-privacy/issues" class="button">Report on GitHub</a></li>
-        <li><strong>Email us:</strong> Include details about your device model, iOS version, and what happened</li>
-    </ul>
+        <div class="faq-item">
+            <div class="faq-question">Why is the transcription not accurate?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Transcription accuracy depends on:</p>
+                    <ul>
+                        <li><strong>Audio quality</strong> — Clear audio with minimal background noise works best</li>
+                        <li><strong>Speaker clarity</strong> — Distinct speech is easier to transcribe</li>
+                        <li><strong>Accents</strong> — Strong accents may reduce accuracy</li>
+                        <li><strong>Technical terms</strong> — Specialized vocabulary may be misinterpreted</li>
+                        <li><strong>Model choice</strong> — Try the Base model for better accuracy</li>
+                    </ul>
+                    <p>For best results, use clear recordings in quiet environments.</p>
+                </div>
+            </div>
+        </div>
 
-    <div class="contact-box">
-        <h2>Still Need Help?</h2>
-        <p>If you couldn't find an answer above, contact us:</p>
-        <p><strong>📧 Email:</strong> <a href="mailto:contact@voxscript.app">contact@voxscript.app</a></p>
-        <p><strong>🐙 GitHub:</strong> <a href="https://github.com/JamesAnthonyDellaMorte/voxscript-privacy">JamesAnthonyDellaMorte/voxscript-privacy</a></p>
-        <p style="margin-top: 15px; font-size: 14px; color: #666;">
-            When contacting support, please include:
-            <ul style="font-size: 14px; color: #666;">
-                <li>Your iPhone model</li>
-                <li>iOS version</li>
-                <li>VoxScript version</li>
-                <li>Description of the issue</li>
-            </ul>
+        <div class="faq-item">
+            <div class="faq-question">Can I transcribe phone calls or live audio?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p><strong>No.</strong> VoxScript only transcribes pre-recorded audio and video files. It does not support:</p>
+                    <ul>
+                        <li>Live recording and transcription</li>
+                        <li>Real-time speech-to-text</li>
+                        <li>Phone call recording</li>
+                    </ul>
+                    <p>You must first create an audio recording using another app (like Voice Memos), then import it into VoxScript.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I use SRT files for video captions?</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <ol>
+                        <li>Export your transcription as SRT format</li>
+                        <li>Import the SRT file into your video editing software:
+                            <ul>
+                                <li><strong>Final Cut Pro</strong> — File &rarr; Import &rarr; Captions</li>
+                                <li><strong>Premiere Pro</strong> — Import SRT as a caption track</li>
+                                <li><strong>DaVinci Resolve</strong> — Import SRT in the subtitle panel</li>
+                                <li><strong>YouTube</strong> — Upload SRT when adding subtitles</li>
+                            </ul>
+                        </li>
+                        <li>Adjust timing if needed in your editor</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">
+            <span class="section-title-icon">!</span>
+            Troubleshooting
+        </h2>
+
+        <div class="faq-item">
+            <div class="faq-question">App crashes or freezes during transcription</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Try these solutions:</p>
+                    <ul>
+                        <li>Restart the app</li>
+                        <li>Free up storage space (transcription models need 40-140MB)</li>
+                        <li>Try a shorter audio file first to test</li>
+                        <li>Switch to the Tiny model if using Base</li>
+                        <li>Restart your iPhone</li>
+                        <li>Ensure iOS is up to date (iOS 17.0 or later required)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Model download failed or stuck</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <ul>
+                        <li>Check your internet connection</li>
+                        <li>Ensure you have enough free storage (40MB for Tiny, 140MB for Base)</li>
+                        <li>Try restarting the app and attempting transcription again</li>
+                        <li>If problem persists, delete and reinstall the app</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Export/Share not working</div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <ul>
+                        <li>Make sure Files app has permission to save files</li>
+                        <li>Check that the receiving app (email, etc.) is properly installed</li>
+                        <li>Try exporting again after restarting VoxScript</li>
+                        <li>Free up storage space on your device</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <p>Have ideas for new features or found a bug? We'd love to hear from you.</p>
+            <a href="https://github.com/JamesAnthonyDellaMorte/voxscript-privacy/issues" class="report-btn">
+                Report on GitHub
+            </a>
+        </div>
+
+        <div class="contact-box">
+            <h2>Still Need Help?</h2>
+            <p>Can't find what you're looking for? Get in touch with our team.</p>
+            <div class="contact-methods">
+                <a href="mailto:contact@voxscript.app" class="contact-btn">
+                    Email Support
+                </a>
+                <a href="https://github.com/JamesAnthonyDellaMorte/voxscript-privacy" class="contact-btn">
+                    GitHub
+                </a>
+            </div>
+            <div class="contact-tips">
+                <h4>When contacting support, please include</h4>
+                <ul>
+                    <li>iPhone model</li>
+                    <li>iOS version</li>
+                    <li>VoxScript version</li>
+                    <li>Description of issue</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>VoxScript &copy; 2025. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+            <a href="support.html">Support</a>
         </p>
-    </div>
+    </footer>
 
-    <hr style="margin-top: 40px; border: none; border-top: 1px solid #e0e0e0;">
-    <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
-        VoxScript &copy; 2025. All rights reserved.<br>
-        <a href="privacy-policy.html" style="color: #3498db;">Privacy Policy</a> |
-        <a href="support.html" style="color: #3498db;">Support</a>
-    </p>
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasOpen = item.classList.contains('open');
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('open');
+                });
+
+                // Open clicked item if it wasn't open
+                if (!wasOpen) {
+                    item.classList.add('open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

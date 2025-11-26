@@ -3,139 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoxScript Privacy Policy</title>
+    <title>Privacy Policy - VoxScript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple-primary: #9333ea;
+            --purple-light: #a855f7;
+            --purple-dark: #7c3aed;
+            --purple-glow: rgba(147, 51, 234, 0.3);
+            --black-primary: #0a0a0a;
+            --black-secondary: #141414;
+            --black-card: #1a1a1a;
+            --black-border: #2a2a2a;
+            --white: #ffffff;
+            --gray-light: #e5e5e5;
+            --gray-mid: #a3a3a3;
+            --gray-dark: #737373;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--black-primary);
+            color: var(--gray-light);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--black-border);
+            z-index: 1000;
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-mid);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--purple-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 24px 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at top, rgba(147, 51, 234, 0.15) 0%, transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-mid);
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .last-updated {
+            display: inline-block;
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: var(--gray-dark);
+        }
+
+        /* Main Content */
+        main {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            padding: 0 24px 100px;
         }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+
+        /* Section Cards */
+        .section {
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s ease;
         }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
+
+        .section:hover {
+            border-color: var(--purple-primary);
         }
-        .last-updated {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 30px;
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .section p {
+            color: var(--gray-mid);
+            margin-bottom: 16px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--purple-light);
+            font-weight: 600;
+        }
+
+        .section ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .section ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--black-border);
+            color: var(--gray-mid);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .section ul li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .section ul li::before {
+            content: "✓";
+            color: var(--purple-light);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .section ul li strong {
+            color: var(--gray-light);
+        }
+
+        /* Zero Data Badge */
+        .zero-data {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(124, 58, 237, 0.1));
+            border: 1px solid var(--purple-primary);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .zero-data h2 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 8px;
+            justify-content: center;
+        }
+
+        .zero-data p {
+            color: var(--gray-mid);
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
         .contact {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 30px;
+            background: linear-gradient(135deg, var(--purple-dark), var(--purple-primary));
+            border: none;
+            color: var(--white);
         }
-        ul {
-            margin-left: 20px;
+
+        .contact h2 {
+            color: var(--white);
+        }
+
+        .contact p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .contact a {
+            color: var(--white);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .contact a:hover {
+            text-decoration-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--black-border);
+            color: var(--gray-dark);
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--purple-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 24px;
+            }
+
+            .section h2 {
+                font-size: 1.25rem;
+            }
+
+            .zero-data {
+                padding: 32px 24px;
+            }
+
+            .zero-data h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>VoxScript Privacy Policy</h1>
-    <p class="last-updated">Last Updated: January 2025</p>
+    <nav>
+        <div class="nav-container">
+            <a href="privacy-policy.html" class="logo">
+                <div class="logo-icon">V</div>
+                VoxScript
+            </a>
+            <ul class="nav-links">
+                <li><a href="privacy-policy.html" class="active">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <h2>Overview</h2>
-    <p>VoxScript is designed with your privacy as the top priority. We believe your data is yours, and yours alone. This privacy policy explains our commitment to protecting your privacy.</p>
+    <section class="hero">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Your data is yours, and yours alone. VoxScript is designed with privacy as the top priority.</p>
+        <span class="last-updated">Last Updated: January 2025</span>
+    </section>
 
-    <h2>Data Collection</h2>
-    <p><strong>We do not collect any personal data.</strong></p>
-    <p>VoxScript does not collect, store, transmit, or process any of the following:</p>
-    <ul>
-        <li>Personal information (name, email, phone number, etc.)</li>
-        <li>Audio or video files you transcribe</li>
-        <li>Transcription text or results</li>
-        <li>Usage analytics or statistics</li>
-        <li>Device information or identifiers</li>
-        <li>Location data</li>
-        <li>Cookies or tracking technologies</li>
-    </ul>
+    <main>
+        <div class="zero-data">
+            <h2>Zero Data Collection</h2>
+            <p>We don't collect, store, or transmit any of your personal data. Ever.</p>
+        </div>
 
-    <h2>How VoxScript Works</h2>
-    <p>All transcription processing happens entirely on your device:</p>
-    <ul>
-        <li><strong>On-Device Processing:</strong> Audio and video files are processed locally using WhisperKit AI technology running on your iPhone's processor.</li>
-        <li><strong>No Cloud Uploads:</strong> Your files never leave your device unless you explicitly choose to share or export them using iOS's built-in share functionality.</li>
-        <li><strong>No Internet Required:</strong> After the initial download of AI models, VoxScript works completely offline.</li>
-        <li><strong>No Account Required:</strong> VoxScript does not require account creation, login, or any form of user registration.</li>
-    </ul>
+        <div class="section">
+            <h2><span class="section-icon">🔒</span> What We Don't Collect</h2>
+            <p>VoxScript does not collect, store, transmit, or process any of the following:</p>
+            <ul>
+                <li>Personal information (name, email, phone number, etc.)</li>
+                <li>Audio or video files you transcribe</li>
+                <li>Transcription text or results</li>
+                <li>Usage analytics or statistics</li>
+                <li>Device information or identifiers</li>
+                <li>Location data</li>
+                <li>Cookies or tracking technologies</li>
+            </ul>
+        </div>
 
-    <h2>Permissions</h2>
-    <p>VoxScript requests the following iOS permissions to function:</p>
-    <ul>
-        <li><strong>Photo Library Access:</strong> To allow you to select videos from your photo library for transcription. Files remain on your device.</li>
-        <li><strong>Files Access:</strong> To allow you to import audio and video files from the Files app or iCloud Drive. Files remain on your device.</li>
-    </ul>
-    <p>These permissions are used solely for their stated purpose and do not enable any data collection.</p>
+        <div class="section">
+            <h2><span class="section-icon">📱</span> How VoxScript Works</h2>
+            <p>All transcription processing happens entirely on your device:</p>
+            <ul>
+                <li><strong>On-Device Processing</strong> — Audio and video files are processed locally using WhisperKit AI technology running on your iPhone's processor</li>
+                <li><strong>No Cloud Uploads</strong> — Your files never leave your device unless you explicitly choose to share or export them</li>
+                <li><strong>No Internet Required</strong> — After the initial download of AI models, VoxScript works completely offline</li>
+                <li><strong>No Account Required</strong> — No account creation, login, or user registration needed</li>
+            </ul>
+        </div>
 
-    <h2>Third-Party Services</h2>
-    <p>VoxScript does not integrate with any third-party services, analytics platforms, advertising networks, or external APIs. The app is completely self-contained.</p>
+        <div class="section">
+            <h2><span class="section-icon">🎛️</span> Permissions</h2>
+            <p>VoxScript requests the following iOS permissions to function:</p>
+            <ul>
+                <li><strong>Photo Library Access</strong> — To select videos from your photo library for transcription. Files remain on your device</li>
+                <li><strong>Files Access</strong> — To import audio and video files from the Files app or iCloud Drive. Files remain on your device</li>
+            </ul>
+            <p>These permissions are used solely for their stated purpose and do not enable any data collection.</p>
+        </div>
 
-    <h2>AI Model Downloads</h2>
-    <p>On first use, VoxScript downloads Whisper AI models from Apple's content delivery network. These downloads are handled by iOS and do not involve any data collection by VoxScript. The models are stored locally on your device.</p>
+        <div class="section">
+            <h2><span class="section-icon">🤖</span> AI Model Downloads</h2>
+            <p>On first use, VoxScript downloads Whisper AI models from Apple's content delivery network. These downloads are handled by iOS and do not involve any data collection by VoxScript. The models are stored locally on your device.</p>
+        </div>
 
-    <h2>Data Storage</h2>
-    <p>All data created by VoxScript (transcriptions, settings, downloaded models) is stored locally on your device in the app's sandbox. This data is:</p>
-    <ul>
-        <li>Only accessible by VoxScript</li>
-        <li>Not backed up to iCloud by default (follows iOS backup policies)</li>
-        <li>Deleted when you uninstall the app</li>
-        <li>Never transmitted to external servers</li>
-    </ul>
+        <div class="section">
+            <h2><span class="section-icon">💾</span> Data Storage</h2>
+            <p>All data created by VoxScript (transcriptions, settings, downloaded models) is stored locally on your device in the app's sandbox. This data is:</p>
+            <ul>
+                <li>Only accessible by VoxScript</li>
+                <li>Not backed up to iCloud by default (follows iOS backup policies)</li>
+                <li>Deleted when you uninstall the app</li>
+                <li>Never transmitted to external servers</li>
+            </ul>
+        </div>
 
-    <h2>Exports and Sharing</h2>
-    <p>When you export or share transcriptions:</p>
-    <ul>
-        <li>VoxScript uses iOS's native share sheet</li>
-        <li>You control where exported files are sent</li>
-        <li>VoxScript does not have access to or knowledge of where you share files</li>
-        <li>The sharing functionality is provided entirely by iOS</li>
-    </ul>
+        <div class="section">
+            <h2><span class="section-icon">📤</span> Exports and Sharing</h2>
+            <p>When you export or share transcriptions:</p>
+            <ul>
+                <li>VoxScript uses iOS's native share sheet</li>
+                <li>You control where exported files are sent</li>
+                <li>VoxScript does not have access to or knowledge of where you share files</li>
+                <li>The sharing functionality is provided entirely by iOS</li>
+            </ul>
+        </div>
 
-    <h2>Children's Privacy</h2>
-    <p>VoxScript does not knowingly collect any data from anyone, including children under 13. Since we don't collect data at all, the app is safe for users of all ages.</p>
+        <div class="section">
+            <h2><span class="section-icon">🔗</span> Third-Party Services</h2>
+            <p>VoxScript does not integrate with any third-party services, analytics platforms, advertising networks, or external APIs. The app is completely self-contained.</p>
+        </div>
 
-    <h2>Changes to This Policy</h2>
-    <p>If we make any changes to this privacy policy, we will update the "Last Updated" date at the top of this page and notify users through an app update description.</p>
+        <div class="section">
+            <h2><span class="section-icon">👶</span> Children's Privacy</h2>
+            <p>VoxScript does not knowingly collect any data from anyone, including children under 13. Since we don't collect data at all, the app is safe for users of all ages.</p>
+        </div>
 
-    <h2>Your Rights</h2>
-    <p>Since VoxScript does not collect any personal data, there is no data to:</p>
-    <ul>
-        <li>Request access to</li>
-        <li>Request deletion of</li>
-        <li>Request correction of</li>
-        <li>Opt out of collection of</li>
-    </ul>
-    <p>Your privacy is protected by design, not by policy alone.</p>
+        <div class="section">
+            <h2><span class="section-icon">⚖️</span> Your Rights</h2>
+            <p>Since VoxScript does not collect any personal data, there is no data to:</p>
+            <ul>
+                <li>Request access to</li>
+                <li>Request deletion of</li>
+                <li>Request correction of</li>
+                <li>Opt out of collection of</li>
+            </ul>
+            <p>Your privacy is protected by design, not by policy alone.</p>
+        </div>
 
-    <h2>Legal Compliance</h2>
-    <p>VoxScript complies with:</p>
-    <ul>
-        <li>Apple App Store Review Guidelines</li>
-        <li>General Data Protection Regulation (GDPR)</li>
-        <li>California Consumer Privacy Act (CCPA)</li>
-        <li>Children's Online Privacy Protection Act (COPPA)</li>
-    </ul>
-    <p>Compliance is straightforward because we simply don't collect any data.</p>
+        <div class="section">
+            <h2><span class="section-icon">📜</span> Legal Compliance</h2>
+            <p>VoxScript complies with:</p>
+            <ul>
+                <li>Apple App Store Review Guidelines</li>
+                <li>General Data Protection Regulation (GDPR)</li>
+                <li>California Consumer Privacy Act (CCPA)</li>
+                <li>Children's Online Privacy Protection Act (COPPA)</li>
+            </ul>
+            <p>Compliance is straightforward because we simply don't collect any data.</p>
+        </div>
 
-    <div class="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions about this privacy policy or VoxScript's privacy practices, please contact us:</p>
-        <p><strong>Email:</strong> contact@voxscript.app</p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/JamesAnthonyDellaMorte/voxscript">github.com/JamesAnthonyDellaMorte/voxscript</a></p>
-    </div>
+        <div class="section">
+            <h2><span class="section-icon">📝</span> Changes to This Policy</h2>
+            <p>If we make any changes to this privacy policy, we will update the "Last Updated" date at the top of this page and notify users through an app update description.</p>
+        </div>
 
-    <hr style="margin-top: 40px; border: none; border-top: 1px solid #e0e0e0;">
-    <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
-        VoxScript &copy; 2025. All rights reserved.<br>
-        This privacy policy is effective as of the date listed above.
-    </p>
+        <div class="section contact">
+            <h2><span class="section-icon">💬</span> Contact Us</h2>
+            <p>If you have any questions about this privacy policy or VoxScript's privacy practices, please contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:contact@voxscript.app">contact@voxscript.app</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/JamesAnthonyDellaMorte/voxscript">github.com/JamesAnthonyDellaMorte/voxscript</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>VoxScript &copy; 2025. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+            <a href="support.html">Support</a>
+        </p>
+    </footer>
 </body>
 </html>
